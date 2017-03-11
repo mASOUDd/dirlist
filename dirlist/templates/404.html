@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Download</title>
+  <script type="text/javascript" src="{{ url_for('static', filename='domready.js') }} "></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='milligram.min.css') }}" type="text/css">
+  <style type="text/css">
+body { text-align: center; }
+
+  </style>
+  <script type="text/javascript">
+domReady(function() {
+  var button = document.querySelector('.button');
+  button.addEventListener('click', function() {
+    history.back();
+  });
+});
+
+  </script>
+  </head>
+  <body>
+
+    <h1>404 Not Found</h1>
+    <p>Your requested page does not exist. Click the button to go back</p>
+    <div>
+    <div class=button>Go back</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+body {
+    padding: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+h3 {
+    display: inline-block;
+    margin-left: 1em;
+}

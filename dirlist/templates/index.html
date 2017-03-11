@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Download</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='domready.js') }} "></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='list.min.js') }} "></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='milligram.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <script type="text/javascript">
+domReady(function() {
+  var options = {
+    valueNames: ['name']
+  };
+  var userList = new List('files', options);
+});
+    </script>
+  </head>
+  <body>
+
+    <a href="/{{ path }}/.." class=button>⬆UP</a><h3> Files in /{{ path }}:</h3>
+    <div id='files'>
+      <input type="search" class='search' placeholder='Search'>
+      <button class='button sort' data-sort='name'>Sort by name</button>
+      <button class='button sort' data-sort='size'>Sort by size</button>
+      <button class='button sort' data-sort='date'>Sort by date</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody class='list'>
+          {% for stat in filestats %}
+          <tr>
+            <td class="name {% if stat['dir'] %}dir{% else %}file{% endif %}"><a href="{{ stat['path'] }}">{{ stat['name'] }}</a></td>
+            <td>{{ stat['human_size'] }}</td>
+            <td>{{ stat['human_mtime'] }}</td>
+            <!-- <td><a class=button href=#><span class=icon>⬇</span><span> Link<span></a></td> -->
+            <td class="hidden size">{{ stat['size'] }}</td>
+            <td class="hidden date">{{ stat['mtime'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
