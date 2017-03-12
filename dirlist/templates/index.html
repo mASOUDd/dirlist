@@ -19,7 +19,7 @@ domReady(function() {
   </head>
   <body>
 
-    <a href="/{{ path }}/.." class=button>⬆UP</a><h3> Files in /{{ path }}:</h3>
+    <a href="{{ url_for('index') + path }}/.." class=button>⬆UP</a><h3> Files in /{{ path }}:</h3>
     <div id='files'>
       <input type="search" class='search' placeholder='Search'>
       <button class='button sort' data-sort='name'>Sort by name</button>
