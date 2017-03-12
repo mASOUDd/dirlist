@@ -10,3 +10,7 @@ h3 {
     display: inline-block;
     margin-left: 1em;
 }
+
+tr.dir {
+    background-color: rgb(232, 232, 232);
+}

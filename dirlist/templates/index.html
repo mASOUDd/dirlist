@@ -35,8 +35,8 @@ domReady(function() {
         </thead>
         <tbody class='list'>
           {% for stat in filestats %}
-          <tr>
-            <td class="name {% if stat['dir'] %}dir{% else %}file{% endif %}"><a href="{{ stat['path'] }}">{{ stat['name'] }}</a></td>
+          <tr class="{% if stat['dir'] %}dir{% else %}file{% endif %}">
+            <td class="name"><a href="{{ stat['path'] }}">{{ stat['name'] }}</a></td>
             <td>{{ stat['human_size'] }}</td>
             <td>{{ stat['human_mtime'] }}</td>
             <!-- <td><a class=button href=#><span class=icon>⬇</span><span> Link<span></a></td> -->

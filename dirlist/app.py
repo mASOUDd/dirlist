@@ -53,9 +53,12 @@ def index(path):
             d = dict()
             s = os.stat(os.path.join(realpath, f))
             d['name'] = f
-            d['human_size'] = sizeof_fmt(s.st_size)
-            d['size'] = s.st_size
             d['dir'] = stat.S_ISDIR(s.st_mode)
+            if d['dir']:
+                d['human_size'] = 'Directory'
+            else:
+                d['human_size'] = sizeof_fmt(s.st_size)
+            d['size'] = s.st_size
             d['mtime'] = s.st_mtime
             d['human_mtime'] = human_time(seconds=(now - s.st_mtime))
             d['path'] = os.path.join(url_for('index') + path, f)
