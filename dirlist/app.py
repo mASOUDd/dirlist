@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, abort, send_file
+from flask import render_template, abort, send_file, url_for
 import os
 import stat
 import datetime
@@ -58,7 +58,7 @@ def index(path):
             d['dir'] = stat.S_ISDIR(s.st_mode)
             d['mtime'] = s.st_mtime
             d['human_mtime'] = human_time(seconds=(now - s.st_mtime))
-            d['path'] = os.path.join('/' + path, f)
+            d['path'] = os.path.join(url_for('index') + path, f)
             filestats.append(d)
         return render_template('index.html', filestats=filestats, path=path)
     else:
